@@ -1,4 +1,5 @@
-    @media (prefers-color-scheme: dark) {
+<!DOCTYPE html><html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>ETP Macro Calculator</title> <style> :root { --color-bg: #fafaf9; --color-surface: #ffffff; --color-text: #1a1a1a; --color-text-secondary: #666666; --color-primary: #0ea5e9; --color-primary-hover: #0284c7; --color-border: #e5e5e5; --color-success: #10b981; --color-warning: #f59e0b; --color-error: #ef4444; --shadow: 0 1px 3px rgba(0, 0, 0, 0.1); --radius: 8px; }
+        @media (prefers-color-scheme: dark) {
         :root {
             --color-bg: #1a1a1a;
             --color-surface: #262626;
@@ -251,7 +252,6 @@
         .phase-tabs { flex-direction: column; }
     }
 </style>
-</head> <body> <div class="container"> <header> <h1>🏋️ ETP Macro Calculator</h1> <p class="subtitle">Eat to Perform-Style Carb Cycling Plans</p> </header>
     <div class="card">
         <h2>Your Information</h2>
         <div class="form-grid">
@@ -524,7 +524,6 @@
         const weeklyTotal = weeklyFood + weeklyBeer;
         const dailyAvg = Math.round(weeklyTotal / 7);
         const deficit = tdee - dailyAvg;
-        const deficitPct = Math.round((deficit / tdee) * 100);
         const lbsPerWeek = ((deficit * 7) / 3500).toFixed(1);
 
         document.getElementById(phaseId + '-avg').textContent = dailyAvg.toLocaleString();
@@ -576,3 +575,4 @@
     }
 </script>
 
+    
