@@ -615,41 +615,21 @@
                 document.getElementById(phaseId + '-6wk').textContent = Math.round(lbsPerWeek * 6);
             }
 
-            const table = document.getElementById(phaseId + '-table');
-            table.innerHTML = `
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Type</th>
-                        <th>Carbs</th>
-                        <th>Protein</th>
-                        <th>Fat</th>
-                        <th>Food Cal</th>
-                        <th>Beer</th>
-                        <th>Total Cal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${macros.map(m => `
-                        <tr>
-                            <td><strong>${m.day}</strong></td>
-                            <td><span class="day-type day-${m.type.toLowerCase()}">${m.type}</span></td>
-                            <td>${m.carbs}g</td>
-                            <td>${m.protein}g</td>
-                            <td>${m.fat}g</td>
-                            <td>${m.foodCal.toLocaleString()}</td>
-                            <td>${m.beer > 0 ? m.beer : '—'}</td>
-                            <td><strong>${m.total.toLocaleString()}</strong></td>
-                        </tr>
-                    `).join('')}
-                    <tr style="font-weight: bold; background: var(--color-border);">
-                        <td colspan="5">Weekly Totals</td>
-                        <td>${weeklyFood.toLocaleString()}</td>
-                        <td>${weeklyBeer > 0 ? weeklyBeer.toLocaleString() : '—'}</td>
-                        <td>${weeklyTotal.toLocaleString()}</td>
-                    </tr>
-                </tbody>
-            `;
+const container = document.getElementById(phaseId + '-table');
+container.innerHTML = <div style="margin-top:16px; display:flex; flex-direction:column; gap:8px;"> ${macros.map(m =>
+<div style="padding:10px 12px; border-radius:8px; border:1px solid var(--color-border); background: var(--color-surface);">
+<div>
+<strong>${m.day}</strong>
+<span class="day-type day-${m.type.toLowerCase()}">${m.type}</span>
+</div>
+<div>
+${m.type} – ${m.carbs}g C · ${m.protein}g P · ${m.fat}g F
+</div>
+<div>
+${m.foodCal.toLocaleString()} food cal${m.beer > 0 ? + ${m.beer} beer = ${m.total.toLocaleString()} total : = ${m.total.toLocaleString()} total}
+</div>
+</div>
+).join('')} <div style="margin-top:8px; padding:10px 12px; border-radius:8px; background: var(--color-border); font-weight:bold;"> Weekly: ${weeklyFood.toLocaleString()} food cal${weeklyBeer > 0 ? + ${weeklyBeer.toLocaleString()} beer = ${weeklyTotal.toLocaleString()} total: = ${weeklyTotal.toLocaleString()} total} </div> </div> ;
         }
     </script>
 </body>
